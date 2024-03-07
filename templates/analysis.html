@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InfoLack</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+      body{
+        background-image: url('https://static.wixstatic.com/media/84770f_994ffe746a074d1f8a2ec9456a8bf1ff~mv2.png/v1/fill/w_1047,h_960,al_br,q_90,usm_0.66_1.00_0.01,enc_auto/84770f_994ffe746a074d1f8a2ec9456a8bf1ff~mv2.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .plotly-graph-div {
+            margin: auto;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+             margin-top: 20px; /* Adjust as needed */
+            margin-bottom: 20px; /* Adjust as needed */
+        }
+        .graph-container {
+            display: flex;
+            /* box-sizing: border-box; */
+            margin-top: 100px; /* Adjust as needed */
+            margin-bottom: 20px; /* Adjust as needed */
+        }
+        
+    </style>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Effort', 'Amount given'],
+      ['our analysis', {{answer}} ],
+      ['scope for improvement',100- {{answer}}]
+    ]);
+
+    var options = {
+      pieHole: 0.5,
+      pieSliceTextStyle: {
+        color: 'black',
+      },
+      legend: 'none'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
+    chart.draw(data, options);
+  }
+</script>
+  
+   
+          
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand">
+      <div class="container-fluid" style="background-color:#fefeff">
+          <a class="navbar-brand fs-2 " href="/">Infolack</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+         
+      </div>
+      <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+          <div class="navbar-nav fs-4 ">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link" href="/analysis">Analysis</a>
+              <a class="nav-link" href="#" >About</a>
+          </div>
+      </div>
+  </nav>
+
+    
+
+
+    <div class="container">
+        <h1 class="text-center">Our Analysis</h1>
+        <form action="/analysis" id="myForm" method="POST">
+
+        <div class="row height d-flex justify-content-center align-items-center">
+
+          <div class="col-md-6">
+
+            <div class="form">
+              <i class="fa fa-search"></i>
+              <input type="text" class="form-control form-input" placeholder="Enter Link" name="link" autocapitalize="off">
+              <span class="left-pan"></span>
+            </div>
+            
+          </div>
+          
+        </div>
+        <div class="text-center mt-5">
+
+            <button type="submit" class="btn btn-primary ">Search</button>
+
+        </div>
+        
+      </div>
+        </form>
+
+       
+
+        
+
+
+
+        
+        
+        <center> <div id="donut_single" style="width: 900px; height: 500px;"></div> </center>
+        
+       
+    
+   
+        
+
+    
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+   
+  </body>
+</html>
